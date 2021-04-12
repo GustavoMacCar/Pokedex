@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 
 function App() {
-
+/*
   const testpokemon = {
     id:1,
     name:"bulbasaur",
@@ -15,16 +15,12 @@ function App() {
     kind:"grass;poison",
     created_at:"2020-05-25T04:48:23.225Z",
     updated_at:"2020-05-25T04:48:23.225Z"
-  }
+  } */
   
 
-  const [pokemonsList, setPokemonsList] = useState(testpokemon)
-  const [testList, setTestList] = useState('')
-  let mylist = '123'
-  setTestList(
-    mylist
-  )
-/*
+  const [pokemonsList, setPokemonsList] = useState([]) 
+
+
   useEffect (() => {
 
     async function getResponse() {
@@ -32,7 +28,9 @@ function App() {
       .get('https://pokedex20201.herokuapp.com/pokemons?page=2')
       console.log(response)
 
-    const fetchedPokemons = response.data
+    const fetchedPokemons = response.data.data
+      
+    /*
     setPokemonsList(fetchedPokemons.map = (pokemon => ({
       id: pokemon.id,
       name: pokemon.name,
@@ -43,22 +41,19 @@ function App() {
       kind: pokemon.kind,
       created_at: pokemon.created_at,
       updated_at: pokemon.updated_at
-    })))
+    })))  */
+
+    setPokemonsList(
+      [...fetchedPokemons]
+    )
+
+
+
   }
   getResponse()
   }, []) 
-
-
-  {pokemonsList.map((pokemon) => (
-              <Pokemon img_path={pokemon.image_url} 
-              number={pokemon.number} 
-              name={pokemon.name} 
-              kind={pokemon.kind}> 
-              </Pokemon>
-            ))}    
   
   
-  */
 
 
 
@@ -66,7 +61,16 @@ function App() {
   return (
     
     <div>
-      
+      <ul>
+      {pokemonsList.map((pokemon) => (
+              <Pokemon 
+              img_path={pokemon.image_url} 
+              number={pokemon.number} 
+              name={pokemon.name} 
+              kind={pokemon.kind}> 
+              </Pokemon>
+            ))}     
+      </ul>      
     </div>
   );
 }
