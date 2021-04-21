@@ -1,8 +1,8 @@
 import axios from 'axios'
-import Pokemon from './components/Pokemon'
 import { useState, useEffect } from "react"
-import Paginas from './components/Paginas'
-
+import {BrowserRouter, Route} from 'react-router-dom'
+import Pokemon from './components/Pokemon'
+import Pokemons from './pages/Pokemons'
 
 function App() {
 /*
@@ -21,15 +21,32 @@ function App() {
 
   const [pokemonsList, setPokemonsList] = useState([]) 
   
-  
   const [page, setPage] = useState('https://pokedex20201.herokuapp.com/pokemons?page=')
+  const [info, setInfo] = useState('https://pokedex20201.herokuapp.com/pokemons/')
   
   const changePage = text => {
     console.log(page)
     setPage('https://pokedex20201.herokuapp.com/pokemons?page='+text)
   }
-    
-    
+
+  const changeInfo = name => {
+    setInfo('https://pokedex20201.herokuapp.com/pokemons/'+name)
+    //console.log(info)
+  }
+
+
+  useEffect(() => {
+    async function getResponse() {
+      const response = await axios
+      .get(info)
+
+      const detailedPokemon = response.data
+    }
+    getResponse()
+
+  }, [info]);
+
+   
     
   useEffect (() => {
       
@@ -37,9 +54,74 @@ function App() {
     const response = await axios
     .get(page)
     
-    console.log(response)
-
     const fetchedPokemons = response.data.data
+
+    setPokemonsList(
+    [...fetchedPokemons]
+      )
+      
+    }
+  getResponse()
+}, [page]) 
+
+
+
+  
+  return (
+    <BrowserRouter>
+    <Route path="/" exact>
+      <Pokemons changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo}></Pokemons>
+    </Route>
+    <Route>
+      
+    </Route>
+    </BrowserRouter>
+  
+  ); 
+  
+}
+
+
+
+
+
+
+
+export default App;
+
+
+
+
+/*
+  return (
+    <BrowserRouter>
+    <Route path="/d" exact>
+      <Details></Details>
+    </Route>
+    
+    <div>
+      <div>
+
+      </div>
+      <div>
+      <ul>
+      {pokemonsList.map((pokemon) => (
+              <Pokemon key={pokemon.id}
+              img_path={pokemon.image_url} 
+              number={pokemon.number} 
+              name={pokemon.name} 
+              kind={pokemon.kind}>
+              </Pokemon>
+            ))}     
+      </ul>      
+      <Paginas changePage={changePage}></Paginas>
+    </div>
+    </div>
+  </BrowserRouter>
+  );  */
+
+
+
 
     /*
     setPokemonsList(fetchedPokemons.map = (pokemon => ({
@@ -54,38 +136,5 @@ function App() {
       updated_at: pokemon.updated_at
     })))  */
     
-    setPokemonsList(
-    [...fetchedPokemons]
-      )
-      
-      
-      
-    }
-  getResponse()
-}, [page]) 
   
-  
-
-
-
-
-  return (
-    
-    <div>
-      <ul>
-      {pokemonsList.map((pokemon) => (
-              <Pokemon 
-              img_path={pokemon.image_url} 
-              number={pokemon.number} 
-              name={pokemon.name} 
-              kind={pokemon.kind}> 
-              </Pokemon>
-            ))}     
-      </ul>      
-      <Paginas changePage={changePage}></Paginas>
-    </div>
-  );
-}
-
-export default App;
 

@@ -1,11 +1,13 @@
-function Pokemon({img_path, number, name, kind})
+function Pokemon({img_path, number, name, kind, changeInfo})
 {
-    return <li>
-        <img src={img_path}></img>
+
+      
+    return <div>
+       <img src={img_path} onClick={() => changeInfo(name)}></img>
         <span>{number}</span>
         <h3>{name}</h3>
         <span>{kind}</span>         
-    </li>
+    </div>
 
 }
 
