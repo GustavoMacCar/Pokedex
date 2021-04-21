@@ -2,11 +2,13 @@ import axios from 'axios'
 import { useState, useEffect } from "react"
 import {BrowserRouter, Route} from 'react-router-dom'
 import Pokemon from './components/Pokemon'
+import Details from './pages/Details'
 import Pokemons from './pages/Pokemons'
 
 function App() {
-/*
-  const testpokemon = {
+  
+  /*
+  const initialPokemon = {
     id:1,
     name:"bulbasaur",
     image_url:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
@@ -16,16 +18,28 @@ function App() {
     kind:"grass;poison",
     created_at:"2020-05-25T04:48:23.225Z",
     updated_at:"2020-05-25T04:48:23.225Z"
-  } */
+  }  
+  */
   
 
   const [pokemonsList, setPokemonsList] = useState([]) 
   
   const [page, setPage] = useState('https://pokedex20201.herokuapp.com/pokemons?page=')
   const [info, setInfo] = useState('https://pokedex20201.herokuapp.com/pokemons/')
+  const [currentPokemon, setCurrentPokemon] = useState({
+    id:'',
+        name:'',
+        image_url:'',
+        number:'',
+        weight:'',
+        height:'',
+        kind:'',
+        created_at:'',
+        updated_at:''
+  })
   
   const changePage = text => {
-    console.log(page)
+    //console.log(page)
     setPage('https://pokedex20201.herokuapp.com/pokemons?page='+text)
   }
 
@@ -41,8 +55,18 @@ function App() {
       .get(info)
 
       const detailedPokemon = response.data
+      //console.log(detailedPokemon)
+     
+      setCurrentPokemon(
+        {...detailedPokemon}
+      )
+      
     }
     getResponse()
+
+    return () => {
+      setCurrentPokemon({})
+    }
 
   }, [info]);
 
@@ -72,8 +96,8 @@ function App() {
     <Route path="/" exact>
       <Pokemons changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo}></Pokemons>
     </Route>
-    <Route>
-      
+    <Route path="/details/">
+      <Details currentPokemon={currentPokemon}></Details>      
     </Route>
     </BrowserRouter>
   
