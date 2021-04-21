@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Pokemon from './components/Pokemon'
 import { useState, useEffect } from "react"
+import Paginas from './components/Paginas'
 
 
 function App() {
@@ -19,17 +20,27 @@ function App() {
   
 
   const [pokemonsList, setPokemonsList] = useState([]) 
-
-
+  
+  
+  const [page, setPage] = useState('https://pokedex20201.herokuapp.com/pokemons?page=')
+  
+  const changePage = text => {
+    console.log(page)
+    setPage('https://pokedex20201.herokuapp.com/pokemons?page='+text)
+  }
+    
+    
+    
   useEffect (() => {
-
-    async function getResponse() {
+      
+  async function getResponse() {
     const response = await axios
-      .get('https://pokedex20201.herokuapp.com/pokemons?page=2')
-      console.log(response)
+    .get(page)
+    
+    console.log(response)
 
     const fetchedPokemons = response.data.data
-      
+
     /*
     setPokemonsList(fetchedPokemons.map = (pokemon => ({
       id: pokemon.id,
@@ -42,16 +53,16 @@ function App() {
       created_at: pokemon.created_at,
       updated_at: pokemon.updated_at
     })))  */
-
+    
     setPokemonsList(
-      [...fetchedPokemons]
-    )
-
-
-
-  }
+    [...fetchedPokemons]
+      )
+      
+      
+      
+    }
   getResponse()
-  }, []) 
+}, [page]) 
   
   
 
@@ -71,6 +82,7 @@ function App() {
               </Pokemon>
             ))}     
       </ul>      
+      <Paginas changePage={changePage}></Paginas>
     </div>
   );
 }
