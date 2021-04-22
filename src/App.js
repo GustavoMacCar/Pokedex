@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import {BrowserRouter, Route} from 'react-router-dom'
 import Pokemon from './components/Pokemon'
 import Pokemons from './pages/Pokemons'
+import Login from './components/Login'
+import Logout from './components/Logout'
 
 function App() {
 /*
@@ -20,39 +22,72 @@ function App() {
   
 
   const [pokemonsList, setPokemonsList] = useState([]) 
-  
-  const [page, setPage] = useState('https://pokedex20201.herokuapp.com/pokemons?page=')
+  const [login, setLogin] = useState('https://pokedex20201.herokuapp.com/users/')/*login guarda as informações do perfil do usuário */
+  const [page, setPage] = useState('https://pokedex20201.herokuapp.com/pokemons?page=')/*page guarda em qual página o usuário está */
   const [info, setInfo] = useState('https://pokedex20201.herokuapp.com/pokemons/')
+  const [coach, setCoach] = useState(''); /*coach guarda o nome do treinador que está logado */
+
+
   
   const changePage = text => {
     console.log(page)
     setPage('https://pokedex20201.herokuapp.com/pokemons?page='+text)
-  }
+  } /* Função para mudar a página */
 
   const changeInfo = name => {
     setInfo('https://pokedex20201.herokuapp.com/pokemons/'+name)
     //console.log(info)
   }
 
+  const loginUser = name => {
+    setLogin('https://pokedex20201.herokuapp.com/users/'+name)
+    setCoach(name)
+    
+  } /*Função que pega o nome do treinador e coloca em login para receber o perfil*/
+
+  useEffect(() => {
+    async function getResponse() {
+      try{
+        const responde = await axios
+          .get(login)
+      } catch(error){
+        axios({
+          method: 'post',
+          url: 'https://pokedex20201.herokuapp.com/users',
+          headers: {}, 
+          data: {
+            username: coach, // This is the body part
+          }
+        });
+
+
+        //axios.post('https://pokedex20201.herokuapp.com/users', coach);
+
+      }
+    }
+    getResponse();
+
+  }, [login]); /*Ela recebe da API o perfil do trainador*/
+
 
   useEffect(() => {
     async function getResponse() {
       const response = await axios
-      .get(info)
+        .get(info)
 
       const detailedPokemon = response.data
     }
-    getResponse()
+    getResponse();
 
   }, [info]);
 
-   
+  
     
   useEffect (() => {
       
   async function getResponse() {
     const response = await axios
-    .get(page)
+      .get(page)
     
     const fetchedPokemons = response.data.data
 
@@ -61,14 +96,23 @@ function App() {
       )
       
     }
-  getResponse()
-}, [page]) 
+
+  getResponse();
+}, [page]) /*Atualiza sempre que o usuário mudar de página*/
 
 
 
-  
+  if(login === 'https://pokedex20201.herokuapp.com/users/'){ /*Verifica se o usuário fez o login*/
+    return(
+      
+      <Login loginUser={loginUser}></Login>
+    )
+    
+  }
   return (
     <BrowserRouter>
+    
+      <Logout loginUser={loginUser} coach></Logout>
     <Route path="/" exact>
       <Pokemons changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo}></Pokemons>
     </Route>
