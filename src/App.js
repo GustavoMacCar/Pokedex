@@ -32,6 +32,8 @@ function App() {
   const [info, setInfo] = useState('https://pokedex20201.herokuapp.com/pokemons/')
   const [coach, setCoach] = useState(''); /*coach guarda o nome do treinador que está logado */
   const [favorite, setFavorite] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1)  
+
 
   const [currentPokemon, setCurrentPokemon] = useState({
     id:'',
@@ -47,6 +49,7 @@ function App() {
   
   const changePage = text => {
     //console.log(page)
+    setCurrentPage(text)
     setPage('https://pokedex20201.herokuapp.com/pokemons?page='+text)
   } /* Função para mudar a página */
 
@@ -61,10 +64,35 @@ function App() {
     
   } /*Função que pega o nome do treinador e coloca em login para receber o perfil*/
 
+  const previousPage = currentPage => {
+    if (currentPage <= 1)
+        return
+    
+    setCurrentPage(currentPage-1)
+    console.log(currentPage)
+    //setPage(currentPage)
+
+  }
+
+  const nextPage = currentPage => {
+    if (currentPage >= 33)
+        return
+    
+    setCurrentPage(currentPage+1)
+    console.log(currentPage)
+    //setPage(currentPage)
+  }
+
+  useEffect(() => {
+    changePage(currentPage)   
+    console.log(currentPage) 
+
+  }, [currentPage])
+
   useEffect(() => {
     async function getResponse() {
       try{
-        const responde = await axios
+        const response = await axios
           .get(login)
       } catch(error){
         axios({
@@ -72,12 +100,9 @@ function App() {
           url: 'https://pokedex20201.herokuapp.com/users',
           headers: {}, 
           data: {
-            username: coach, // This is the body part
+            username: coach, 
           }
         });
-
-
-        //axios.post('https://pokedex20201.herokuapp.com/users', coach);
 
       }
     }
@@ -160,8 +185,7 @@ function App() {
     <BrowserRouter>
       <Logout loginUser={loginUser} coach={coach}></Logout>
     <Route path="/" exact>
-      <Pokemons changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo}></Pokemons>
-      
+      <Pokemons currentPage={currentPage} nextPage={nextPage} previousPage={previousPage} changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo}></Pokemons>
     </Route>
     <Route path="/details/">
       <Details currentPokemon={currentPokemon}></Details>      

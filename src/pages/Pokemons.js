@@ -2,7 +2,7 @@ import Pokemon from '../components/Pokemon'
 import Paginas from '../components/Paginas'
 import {Link} from 'react-router-dom'
 
-function Pokemons({pokemonsList, changePage, changeInfo})
+function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPage, nextPage})
 {
     return (
         <div>
@@ -17,7 +17,7 @@ function Pokemons({pokemonsList, changePage, changeInfo})
             ))}     
       </ul>  
 
-      <Paginas changePage={changePage}></Paginas>
+      <Paginas previousPage={previousPage} nextPage={nextPage} currentPage={currentPage} changePage={changePage}></Paginas>
       </div>    
     )    
 
