@@ -13,6 +13,7 @@ function Details({currentPokemon})
         <div>
           <Link to="/">Voltar</Link>
         </div>
+          <Link to="/favorites">Voltar Favoritos</Link>
     </div>
 
 }

@@ -1,4 +1,4 @@
-function Logout( {loginUser}, coach) 
+function Logout( {loginUser, coach} ) 
 {
 
     const handleSubmit = event =>{
@@ -7,7 +7,7 @@ function Logout( {loginUser}, coach)
     }
 
     return <form onSubmit={handleSubmit}>
-        <h3>Olá</h3>
+        <h3>Olá {coach}</h3>
         <button>Sair</button>
     </form>
 

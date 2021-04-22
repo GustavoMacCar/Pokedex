@@ -6,6 +6,8 @@ import Details from './pages/Details'
 import Pokemons from './pages/Pokemons'
 import Login from './components/Login'
 import Logout from './components/Logout'
+import userEvent from '@testing-library/user-event'
+import Favorites from './pages/Favorites'
 
 function App() {
   
@@ -29,7 +31,7 @@ function App() {
   const [page, setPage] = useState('https://pokedex20201.herokuapp.com/pokemons?page=')/*page guarda em qual página o usuário está */
   const [info, setInfo] = useState('https://pokedex20201.herokuapp.com/pokemons/')
   const [coach, setCoach] = useState(''); /*coach guarda o nome do treinador que está logado */
-
+  const [favorite, setFavorite] = useState([]);
 
   const [currentPokemon, setCurrentPokemon] = useState({
     id:'',
@@ -105,7 +107,28 @@ function App() {
 
   }, [info]);
 
-  
+  useEffect(() => {
+
+    async function getFavorite() {
+      const response = await axios
+        .get(login)
+      
+      if (!(login === 'https://pokedex20201.herokuapp.com/users/')){
+        const favoritePokemons = response.data.pokemons
+        const favoritePokemonsList = Object.values(favoritePokemons)
+        console.log(favoritePokemonsList[0])
+        setFavorite(
+          [...favoritePokemonsList]
+          )
+
+      }
+      
+        
+      }
+    getFavorite();
+
+
+  }, [login]);
     
   useEffect (() => {
       
@@ -135,13 +158,16 @@ function App() {
   }
   return (
     <BrowserRouter>
-    
-      <Logout loginUser={loginUser} coach></Logout>
+      <Logout loginUser={loginUser} coach={coach}></Logout>
     <Route path="/" exact>
       <Pokemons changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo}></Pokemons>
+      
     </Route>
     <Route path="/details/">
       <Details currentPokemon={currentPokemon}></Details>      
+    </Route>
+    <Route path="/favorites/" exact>
+      <Favorites pokemonsList={favorite} changeInfo={changeInfo}></Favorites>
     </Route>
     </BrowserRouter>
   
@@ -160,49 +186,5 @@ export default App;
 
 
 
-/*
-  return (
-    <BrowserRouter>
-    <Route path="/d" exact>
-      <Details></Details>
-    </Route>
-    
-    <div>
-      <div>
 
-      </div>
-      <div>
-      <ul>
-      {pokemonsList.map((pokemon) => (
-              <Pokemon key={pokemon.id}
-              img_path={pokemon.image_url} 
-              number={pokemon.number} 
-              name={pokemon.name} 
-              kind={pokemon.kind}>
-              </Pokemon>
-            ))}     
-      </ul>      
-      <Paginas changePage={changePage}></Paginas>
-    </div>
-    </div>
-  </BrowserRouter>
-  );  */
-
-
-
-
-    /*
-    setPokemonsList(fetchedPokemons.map = (pokemon => ({
-      id: pokemon.id,
-      name: pokemon.name,
-      image_url: pokemon.image_url,
-      number: pokemon.number,
-      weight: pokemon.weight,
-      height: pokemon.height,
-      kind: pokemon.kind,
-      created_at: pokemon.created_at,
-      updated_at: pokemon.updated_at
-    })))  */
-    
-  
 

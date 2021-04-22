@@ -10,7 +10,7 @@ function Pokemon({img_path, number, name, kind, changeInfo})
         <Link to={`/details/${name}`}><img src={img_path} onClick={() => changeInfo(name)}></img></Link>
         <span>{number}</span>
         <h3>{upperCase(name)}</h3>
-        <span>{upperCase(kind)}</span>         
+        <span>{kind}</span>         
     </div>
 
 }
