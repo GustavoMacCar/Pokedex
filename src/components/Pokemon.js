@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Pokemon({img_path, number, name, kind, changeInfo})
 {
     function upperCase(text) {
@@ -5,7 +7,7 @@ function Pokemon({img_path, number, name, kind, changeInfo})
     } /*Função que coloca a primeira letra em maiúscula das palavra que recebe*/
     
     return <div>
-        <img src={img_path} onClick={() => changeInfo(name)}></img>
+        <Link to={`/details/${name}`}><img src={img_path} onClick={() => changeInfo(name)}></img></Link>
         <span>{number}</span>
         <h3>{upperCase(name)}</h3>
         <span>{upperCase(kind)}</span>         
