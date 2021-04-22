@@ -32,6 +32,7 @@ function App() {
   const [info, setInfo] = useState('https://pokedex20201.herokuapp.com/pokemons/')
   const [coach, setCoach] = useState(''); /*coach guarda o nome do treinador que está logado */
   const [favorite, setFavorite] = useState([]);
+  const [newFavorite, setNewFavorite] = useState('')
   const [currentPage, setCurrentPage] = useState(1)  
 
 
@@ -64,6 +65,11 @@ function App() {
     
   } /*Função que pega o nome do treinador e coloca em login para receber o perfil*/
 
+  const addToFavorites = name => {
+    setNewFavorite(name)
+    //console.log(name)
+  }
+
   const previousPage = currentPage => {
     if (currentPage <= 1)
         return
@@ -85,7 +91,7 @@ function App() {
 
   useEffect(() => {
     changePage(currentPage)   
-    console.log(currentPage) 
+    //console.log(currentPage) 
 
   }, [currentPage])
 
@@ -109,6 +115,20 @@ function App() {
     getResponse();
 
   }, [login]); /*Ela recebe da API o perfil do trainador*/
+
+  useEffect(() => {
+    async function newFavoritePokemon() {
+      try{
+        console.log(newFavorite)
+        await axios.post('https://pokedex20201.herokuapp.com/users/'+coach+'/starred/'+newFavorite)
+      } catch(error){
+        console.log(error)
+
+      }
+    }
+    newFavoritePokemon(newFavorite)
+
+  }, [newFavorite])
 
 
   useEffect(() => {
@@ -153,7 +173,7 @@ function App() {
     getFavorite();
 
 
-  }, [login]);
+  }, [login, newFavorite]);
     
   useEffect (() => {
       
@@ -185,7 +205,7 @@ function App() {
     <BrowserRouter>
       <Logout loginUser={loginUser} coach={coach}></Logout>
     <Route path="/" exact>
-      <Pokemons currentPage={currentPage} nextPage={nextPage} previousPage={previousPage} changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo}></Pokemons>
+      <Pokemons currentPage={currentPage} nextPage={nextPage} previousPage={previousPage} changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo} addToFavorites={addToFavorites}></Pokemons>
     </Route>
     <Route path="/details/">
       <Details currentPokemon={currentPokemon}></Details>      
