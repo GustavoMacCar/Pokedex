@@ -147,6 +147,26 @@ function App() {
         console.log(error)
 
       }
+
+      const response = await axios
+        .get(login)
+      
+      if (!(login === 'https://pokedex20201.herokuapp.com/users/')){
+        const favoritePokemons = response.data.pokemons
+        const favoritePokemonsList = Object.values(favoritePokemons)
+        //console.log(favoritePokemonsList)
+        setFavorite(
+          [...favoritePokemonsList]
+          )
+
+      }
+
+      console.log(favorite)
+
+      
+      return () => {
+        setFavorite([])
+      }      
     }
     newFavoritePokemon(newFavorite)
 
@@ -211,7 +231,7 @@ function App() {
       if (!(login === 'https://pokedex20201.herokuapp.com/users/')){
         const favoritePokemons = response.data.pokemons
         const favoritePokemonsList = Object.values(favoritePokemons)
-        //console.log(favoritePokemonsList[0])
+        //console.log(favoritePokemonsList)
         setFavorite(
           [...favoritePokemonsList]
           )
@@ -230,7 +250,7 @@ function App() {
     getFavorite();
 
 
-  }, [login, newFavorite, removeFavorite]);
+  }, [login, removeFavorite]);
 
 
   useEffect(() => {
@@ -249,7 +269,7 @@ function App() {
 
       }
 
-      console.log(favoritesToRender)
+      //console.log(favoritesToRender)
 
       
       return () => {
