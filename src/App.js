@@ -119,7 +119,7 @@ function App() {
   useEffect(() => {
     async function newFavoritePokemon() {
       try{
-        console.log(newFavorite)
+        //console.log(newFavorite)
         await axios.post('https://pokedex20201.herokuapp.com/users/'+coach+'/starred/'+newFavorite)
       } catch(error){
         console.log(error)
@@ -161,19 +161,23 @@ function App() {
       if (!(login === 'https://pokedex20201.herokuapp.com/users/')){
         const favoritePokemons = response.data.pokemons
         const favoritePokemonsList = Object.values(favoritePokemons)
-        console.log(favoritePokemonsList[0])
+        //console.log(favoritePokemonsList[0])
         setFavorite(
           [...favoritePokemonsList]
           )
 
       }
+
+      return () => {
+        setFavorite([])
+      }     
       
         
       }
     getFavorite();
 
 
-  }, [login, newFavorite]);
+  }, [login, newFavorite, favorite]);
     
   useEffect (() => {
       
