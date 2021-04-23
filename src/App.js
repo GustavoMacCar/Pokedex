@@ -31,9 +31,9 @@ function App() {
   const [page, setPage] = useState('https://pokedex20201.herokuapp.com/pokemons?page=')/*page guarda em qual página o usuário está */
   const [info, setInfo] = useState('https://pokedex20201.herokuapp.com/pokemons/')
   const [coach, setCoach] = useState(''); /*coach guarda o nome do treinador que está logado */
-  const [favorite, setFavorite] = useState([]);
-  const [newFavorite, setNewFavorite] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)  
+  const [favorite, setFavorite] = useState([]); /*guarda a lista de favoritos do treinador logado*/
+  const [newFavorite, setNewFavorite] = useState('') /*guarda um novo pokemon a ser adicionado na lista de favoritos*/
+  const [currentPage, setCurrentPage] = useState(1)  /*guarda o numero da pagina atual*/
 
 
   const [currentPokemon, setCurrentPokemon] = useState({
@@ -186,6 +186,29 @@ function App() {
       .get(page)
     
     const fetchedPokemons = response.data.data
+
+    let i = 0;
+    let j = 0;
+
+    for (i = 0; i < fetchedPokemons.length; i++)
+    {
+      fetchedPokemons[i].inFavorites = false
+    }
+
+
+    for (i = 0; i < fetchedPokemons.length; i++)
+    {
+      for(j = 0; j < favorite.length; j++)
+      {
+        if (fetchedPokemons[i].name === favorite[j].name)
+        {
+          fetchedPokemons[i].inFavorites = true
+        }
+      }
+      
+    }
+
+    console.log(fetchedPokemons)    
 
     setPokemonsList(
     [...fetchedPokemons]
