@@ -168,9 +168,10 @@ function App() {
 
       }
 
+      
       return () => {
         setFavorite([])
-      }     
+      }      
       
         
       }
@@ -217,7 +218,58 @@ function App() {
     }
 
   getResponse();
-}, [page]) /*Atualiza sempre que o usuário mudar de página*/
+}, [page, login]) /*Atualiza sempre que o usuário mudar de página*/
+
+
+
+
+useEffect (() => {
+      
+    let i = 0;
+    let j = 0;
+
+    for (i = 0; i < pokemonsList.length; i++)
+    {
+      pokemonsList[i].inFavorites = false
+    }
+
+
+    for (i = 0; i < pokemonsList.length; i++)
+    {
+      for(j = 0; j < favorite.length; j++)
+      {
+        if (pokemonsList[i].name === favorite[j].name)
+        {
+          pokemonsList[i].inFavorites = true
+        }
+      }
+      
+    }
+
+    
+
+  
+}, [favorite]) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

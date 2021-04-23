@@ -13,7 +13,8 @@ function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPa
               img_path={pokemon.image_url} 
               name={pokemon.name} 
               changeInfo={changeInfo}
-              addToFavorites={addToFavorites}>
+              addToFavorites={addToFavorites}
+              inFavorites={pokemon.inFavorites}>
               </Pokemon>
             ))}     
       </ul>  
