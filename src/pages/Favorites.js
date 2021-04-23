@@ -2,7 +2,7 @@ import Pokemon from '../components/Pokemon'
 import {Link} from 'react-router-dom'
 
 
-function Favorites({pokemonsList, changeInfo})
+function Favorites({pokemonsList, changeInfo, handleFavorites})
 {
     return (
         <div>
@@ -14,7 +14,9 @@ function Favorites({pokemonsList, changeInfo})
             number={pokemon.number} 
             name={pokemon.name} 
             kind={pokemon.kind}
-            changeInfo={changeInfo}>
+            changeInfo={changeInfo}
+            handleFavorites={handleFavorites}
+            inFavorites={pokemon.inFavorites}>
             </Pokemon>
             ))}     
     </ul>  

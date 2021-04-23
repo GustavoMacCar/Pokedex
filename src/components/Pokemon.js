@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function Pokemon({img_path, number, name, kind, changeInfo, addToFavorites, inFavorites})
+function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inFavorites})
 {
     function upperCase(text) {
         return text.charAt(0).toUpperCase() + text.slice(1);
@@ -12,8 +12,8 @@ function Pokemon({img_path, number, name, kind, changeInfo, addToFavorites, inFa
         <h3>{upperCase(name)}</h3>
         <span>{kind}</span> 
         <div>
-        <button type="button" onClick={() => addToFavorites(name)}
-        style={{backgroundColor: inFavorites ? 'green' : 'red'}}
+        <button type="button" onClick={() => handleFavorites(name)}
+        style={{backgroundColor: inFavorites ? 'red' : 'green'}}
         >Favoritar</button>    
         </div>    
     </div>

@@ -34,6 +34,7 @@ function App() {
   const [favorite, setFavorite] = useState([]); /*guarda a lista de favoritos do treinador logado*/
   const [newFavorite, setNewFavorite] = useState('') /*guarda um novo pokemon a ser adicionado na lista de favoritos*/
   const [currentPage, setCurrentPage] = useState(1)  /*guarda o numero da pagina atual*/
+  const [removeFavorite, setRemoveFavorite] = useState('')
 
 
   const [currentPokemon, setCurrentPokemon] = useState({
@@ -70,6 +71,28 @@ function App() {
     //console.log(name)
   }
 
+  const removeFromFavorites = name => {
+    setRemoveFavorite(name)
+  }
+
+  const handleFavorites = name => {
+
+    let i = 0;
+        
+    for (i = 0; i < favorite.length; i++)
+    {
+      if (name === favorite[i].name)
+      {
+        removeFromFavorites(name)
+        return
+      }
+      
+    }
+
+    addToFavorites(name)
+    
+  }
+
   const previousPage = currentPage => {
     if (currentPage <= 1)
         return
@@ -85,7 +108,7 @@ function App() {
         return
     
     setCurrentPage(currentPage+1)
-    console.log(currentPage)
+    //console.log(currentPage)
     //setPage(currentPage)
   }
 
@@ -129,6 +152,34 @@ function App() {
     newFavoritePokemon(newFavorite)
 
   }, [newFavorite])
+
+
+  useEffect(() => {
+    async function removePokemon() {
+      try{
+        //console.log(newFavorite)
+        await axios.delete('https://pokedex20201.herokuapp.com/users/'+coach+'/starred/'+removeFavorite)
+      } catch(error){
+        console.log(error)
+
+      }
+    }
+    removePokemon(removeFavorite)
+
+  }, [removeFavorite])
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   useEffect(() => {
@@ -284,13 +335,13 @@ useEffect (() => {
     <BrowserRouter>
       <Logout loginUser={loginUser} coach={coach}></Logout>
     <Route path="/" exact>
-      <Pokemons currentPage={currentPage} nextPage={nextPage} previousPage={previousPage} changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo} addToFavorites={addToFavorites}></Pokemons>
+      <Pokemons currentPage={currentPage} nextPage={nextPage} previousPage={previousPage} changePage={changePage} pokemonsList={pokemonsList} changeInfo={changeInfo} handleFavorites={handleFavorites}></Pokemons>
     </Route>
     <Route path="/details/">
       <Details currentPokemon={currentPokemon}></Details>      
     </Route>
     <Route path="/favorites/" exact>
-      <Favorites pokemonsList={favorite} changeInfo={changeInfo}></Favorites>
+      <Favorites pokemonsList={favorite} changeInfo={changeInfo} handleFavorites={handleFavorites}></Favorites>
     </Route>
     </BrowserRouter>
   
