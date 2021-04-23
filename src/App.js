@@ -35,6 +35,7 @@ function App() {
   const [newFavorite, setNewFavorite] = useState('') /*guarda um novo pokemon a ser adicionado na lista de favoritos*/
   const [currentPage, setCurrentPage] = useState(1)  /*guarda o numero da pagina atual*/
   const [removeFavorite, setRemoveFavorite] = useState('')
+  const [favoritesToRender, setFavoritesToRender] = useState([])
 
 
   const [currentPokemon, setCurrentPokemon] = useState({
@@ -89,8 +90,7 @@ function App() {
       
     }
 
-    addToFavorites(name)
-    
+    addToFavorites(name)    
   }
 
   const previousPage = currentPage => {
@@ -98,7 +98,6 @@ function App() {
         return
     
     setCurrentPage(currentPage-1)
-    console.log(currentPage)
     //setPage(currentPage)
 
   }
@@ -219,6 +218,8 @@ function App() {
 
       }
 
+      console.log(favorite)
+
       
       return () => {
         setFavorite([])
@@ -229,7 +230,45 @@ function App() {
     getFavorite();
 
 
-  }, [login, newFavorite, favorite]);
+  }, [login, newFavorite, removeFavorite]);
+
+
+  useEffect(() => {
+
+    async function getFavoritesToRender() {
+      const response = await axios
+        .get(login)
+      
+      if (!(login === 'https://pokedex20201.herokuapp.com/users/')){
+        const favoritePokemons = response.data.pokemons
+        const favoritePokemonsList = Object.values(favoritePokemons)
+        //console.log(favoritePokemonsList[0])
+        setFavoritesToRender(
+          [...favoritePokemonsList]
+          )
+
+      }
+
+      console.log(favoritesToRender)
+
+      
+      return () => {
+        setFavoritesToRender([])
+      }      
+      
+        
+      }
+      getFavoritesToRender();
+
+
+  }, [favorite]);
+
+
+
+
+
+
+
     
   useEffect (() => {
       
@@ -260,7 +299,7 @@ function App() {
       
     }
 
-    console.log(fetchedPokemons)    
+    //console.log(fetchedPokemons)    
 
     setPokemonsList(
     [...fetchedPokemons]
@@ -304,26 +343,6 @@ useEffect (() => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   if(login === 'https://pokedex20201.herokuapp.com/users/'){ /*Verifica se o usuário fez o login*/
     return(
       
@@ -341,7 +360,7 @@ useEffect (() => {
       <Details currentPokemon={currentPokemon}></Details>      
     </Route>
     <Route path="/favorites/" exact>
-      <Favorites pokemonsList={favorite} changeInfo={changeInfo} handleFavorites={handleFavorites}></Favorites>
+      <Favorites pokemonsList={favoritesToRender} changeInfo={changeInfo} handleFavorites={handleFavorites}></Favorites>
     </Route>
     </BrowserRouter>
   

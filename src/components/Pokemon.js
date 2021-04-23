@@ -5,6 +5,13 @@ function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inF
     function upperCase(text) {
         return text.charAt(0).toUpperCase() + text.slice(1);
     } /*Função que coloca a primeira letra em maiúscula das palavra que recebe*/
+
+    let buttonText = ''
+    if (inFavorites === true) {
+        buttonText = 'Remover'
+    } else {
+        buttonText = 'Favoritar'
+    }
     
     return <div>
         <Link to={`/details/${name}`}><img src={img_path} onClick={() => changeInfo(name)}></img></Link>
@@ -14,7 +21,7 @@ function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inF
         <div>
         <button type="button" onClick={() => handleFavorites(name)}
         style={{backgroundColor: inFavorites ? 'red' : 'green'}}
-        >Favoritar</button>    
+        >{buttonText}</button>    
         </div>    
     </div>
 
