@@ -281,6 +281,15 @@ function App() {
         const favoritePokemons = response.data.pokemons
         const favoritePokemonsList = Object.values(favoritePokemons)
         //console.log(favoritePokemonsList[0])
+        let i = 0;
+
+       
+      for (i = 0; i < favoritePokemonsList.length; i++)
+        {
+          favoritePokemonsList[i].inFavorites = true            
+        }
+
+
         setFavoritesToRender(
           [...favoritePokemonsList]
           )
@@ -375,21 +384,22 @@ useEffect (() => {
     }
 
     
+    
 
   
 }, [favorite]) 
 
 
 useEffect (() => {
-      
+      /*
   let i = 0;
   
   for (i = 0; i < favoritesToRender.length; i ++)
   {
     favoritesToRender[i].inFavorites = true
-  }
+  } */
 
-  console.log(favoritesToRender)
+  //console.log(favoritesToRender)
 
   return () => {
     setFavoritesToRender([])
