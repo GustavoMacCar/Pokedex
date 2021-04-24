@@ -1,4 +1,4 @@
-import Pokemon from '../components/Pokemon'
+import Pokemon from '../components/Pokemon/index'
 import {Link} from 'react-router-dom'
 
 

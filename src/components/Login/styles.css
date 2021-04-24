@@ -1,0 +1,26 @@
+.Login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+input{
+    border-radius: 10px;
+    padding-left: 7px;
+    outline: none;
+    border: 1px solid #ddd;
+}
+
+.ButtonLogin{
+    margin-top: 10px;
+    height: 30px;
+    width: 80px;
+    font-size: 15px;
+    border: 1px solid black;
+    border-radius: 15px;
+    outline: none;
+    background-color: #ddd; 
+}

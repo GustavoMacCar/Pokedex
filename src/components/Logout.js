@@ -7,7 +7,7 @@ function Logout( {loginUser, coach} )
     }
 
     return <form onSubmit={handleSubmit}>
-        <h3>Olá {coach}</h3>
+        <h3>Olá {coach} !!</h3>
         <button>Sair</button>
     </form>
 

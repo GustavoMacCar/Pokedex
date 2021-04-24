@@ -1,10 +1,9 @@
 import axios from 'axios'
 import { useState, useEffect } from "react"
 import {BrowserRouter, Route} from 'react-router-dom'
-import Pokemon from './components/Pokemon'
 import Details from './pages/Details'
 import Pokemons from './pages/Pokemons'
-import Login from './components/Login'
+import Login from './components/Login/index'
 import Logout from './components/Logout'
 import userEvent from '@testing-library/user-event'
 import Favorites from './pages/Favorites'
@@ -407,7 +406,7 @@ useEffect (() => {
   if(login === 'https://pokedex20201.herokuapp.com/users/'){ /*Verifica se o usuário fez o login*/
     return(
       
-      <Login loginUser={loginUser}></Login>
+      <Login  loginUser={loginUser}></Login>
     )
     
   }
