@@ -5,7 +5,6 @@ import Details from './pages/Details'
 import Pokemons from './pages/Pokemons'
 import Login from './components/Login/index'
 import Logout from './components/Logout/index'
-import userEvent from '@testing-library/user-event'
 import Favorites from './pages/Favorites'
 
 function App() {
@@ -238,7 +237,7 @@ function App() {
       setCurrentPokemon({})
     }
 
-  }, [info]);
+  }, [info, login]);
 
   useEffect(() => {
 
@@ -391,15 +390,7 @@ useEffect (() => {
 
 
 useEffect (() => {
-      /*
-  let i = 0;
-  
-  for (i = 0; i < favoritesToRender.length; i ++)
-  {
-    favoritesToRender[i].inFavorites = true
-  } */
-
-  //console.log(favoritesToRender)
+ 
 
   return () => {
     setFavoritesToRender([])

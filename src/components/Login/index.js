@@ -6,7 +6,7 @@ border-radius: 10px;
 padding-left: 7px;
 outline: none;
 border: 1px solid #ddd;
-`
+` 
 
 const StyledButton = styled.button `
 margin-top: 10px;

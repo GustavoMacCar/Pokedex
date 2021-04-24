@@ -1,5 +1,7 @@
 import {Link} from 'react-router-dom'
-function Details({currentPokemon})
+
+
+function Details( {currentPokemon} )
 {
     return  <div>
         <div>
