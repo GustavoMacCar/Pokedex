@@ -17,8 +17,15 @@ border: 1px solid black;
 border-radius: 15px;
 outline: none;
 background-color: #ddd; 
-}
 `
+
+const StyledDiv = styled.div `
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
+
 
 function Login( {loginUser}) 
 {
@@ -30,10 +37,13 @@ function Login( {loginUser})
     }
 
     return <form onSubmit={handleSubmit}>
-        <h2>Bem vindo!!!!</h2>
-        <h3>Digite seu nome treinador!!</h3>
-        <StyledInput value={coach} onChange={event => setCoach(event.target.value)}></StyledInput>
-        <StyledButton>Enviar</StyledButton>
+        <StyledDiv>
+            <h2>Bem vindo!!!!</h2>
+            <h3>Digite seu nome treinador!!</h3>
+            <StyledInput value={coach} onChange={event => setCoach(event.target.value)}></StyledInput>
+            <StyledButton>Enviar</StyledButton> 
+        </StyledDiv>
+        
     </form>
 
 }

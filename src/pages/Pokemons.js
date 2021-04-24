@@ -1,12 +1,12 @@
-import Pokemon from '..//components/Pokemon/index'
-import Paginas from '../components/Paginas'
-import {Link} from 'react-router-dom'
+import Pokemon from '../components/Pokemon/index'
+import Paginas from '../components/Paginas/index'
+
 
 function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPage, nextPage, handleFavorites})
 {
   return (
         <div>
-          <Link to="/favorites/">Meus Favoritos</Link>
+          
         <ul>
       {pokemonsList.map((pokemon) => (
               <Pokemon key={pokemon.id}

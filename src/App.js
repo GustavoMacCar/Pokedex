@@ -4,7 +4,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import Details from './pages/Details'
 import Pokemons from './pages/Pokemons'
 import Login from './components/Login/index'
-import Logout from './components/Logout'
+import Logout from './components/Logout/index'
 import userEvent from '@testing-library/user-event'
 import Favorites from './pages/Favorites'
 

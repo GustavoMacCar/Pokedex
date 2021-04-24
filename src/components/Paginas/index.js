@@ -1,4 +1,16 @@
 import { useState } from "react";
+import styled from 'styled-components'
+
+
+const StyledNumber = styled.div `
+display: flex;
+flex-direction: row;
+border-radius: 30px;
+width: 100%;
+
+`
+
+
 
 function Paginas({ changePage, currentPage, nextPage, previousPage })
 {           
@@ -14,7 +26,7 @@ function Paginas({ changePage, currentPage, nextPage, previousPage })
         <div>
         <button onClick={() => previousPage(currentPage)}>Página anterior</button>                        
         </div>
-        <div>
+        <StyledNumber>
             <form onSubmit={handleSubmit}>
             <button onClick={() => setValue(1)}>1</button>
             <button onClick={() => setValue(2)}>2</button>
@@ -50,10 +62,10 @@ function Paginas({ changePage, currentPage, nextPage, previousPage })
             <button onClick={() => setValue(32)}>32</button>
             <button onClick={() => setValue(33)}>33</button>
     </form> 
-    </div>
+    </StyledNumber>
     <div>
         <button onClick={() => nextPage(currentPage)}>Página seguinte</button>                        
-        </div>
+    </div>
     </div>
             
 
