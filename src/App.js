@@ -1,11 +1,10 @@
 import axios from 'axios'
 import { useState, useEffect } from "react"
 import {BrowserRouter, Route} from 'react-router-dom'
-import Details from './pages/Details'
+import Details from './pages/Details/index'
 import Pokemons from './pages/Pokemons'
 import Login from './components/Login/index'
 import Logout from './components/Logout'
-import userEvent from '@testing-library/user-event'
 import Favorites from './pages/Favorites'
 
 function App() {
@@ -238,7 +237,7 @@ function App() {
       setCurrentPokemon({})
     }
 
-  }, [info]);
+  }, [info, login]);
 
   useEffect(() => {
 
