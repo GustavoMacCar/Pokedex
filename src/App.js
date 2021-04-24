@@ -161,7 +161,7 @@ function App() {
 
       }
 
-      console.log(favorite)
+      //console.log(favorite)
 
       
       return () => {
@@ -182,6 +182,25 @@ function App() {
         console.log(error)
 
       }
+
+      const response = await axios
+        .get(login)
+      
+      if (!(login === 'https://pokedex20201.herokuapp.com/users/')){
+        const favoritePokemons = response.data.pokemons
+        const favoritePokemonsList = Object.values(favoritePokemons)
+        //console.log(favoritePokemonsList)
+        setFavorite(
+          [...favoritePokemonsList]
+          )
+
+      }
+
+      return () => {
+        setFavorite([])
+      }      
+
+
     }
     removePokemon(removeFavorite)
 
@@ -238,7 +257,7 @@ function App() {
 
       }
 
-      console.log(favorite)
+      //console.log(favorite)
 
       
       return () => {
@@ -250,7 +269,7 @@ function App() {
     getFavorite();
 
 
-  }, [login, removeFavorite]);
+  }, [login]);
 
 
   useEffect(() => {
@@ -274,7 +293,7 @@ function App() {
       
       return () => {
         setFavoritesToRender([])
-      }      
+      }       
       
         
       }
@@ -360,6 +379,28 @@ useEffect (() => {
 
   
 }, [favorite]) 
+
+
+useEffect (() => {
+      
+  let i = 0;
+  
+  for (i = 0; i < favoritesToRender.length; i ++)
+  {
+    favoritesToRender[i].inFavorites = true
+  }
+
+  console.log(favoritesToRender)
+
+  return () => {
+    setFavoritesToRender([])
+    setFavorite([])
+  }      
+
+    
+
+
+}, [login]) 
 
 
 
