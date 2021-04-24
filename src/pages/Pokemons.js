@@ -2,7 +2,7 @@ import Pokemon from '../components/Pokemon'
 import Paginas from '../components/Paginas'
 import {Link} from 'react-router-dom'
 
-function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPage, nextPage})
+function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPage, nextPage, handleFavorites})
 {
     return (
         <div>
@@ -12,7 +12,9 @@ function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPa
               <Pokemon key={pokemon.id}
               img_path={pokemon.image_url} 
               name={pokemon.name} 
-              changeInfo={changeInfo}>
+              changeInfo={changeInfo}
+              handleFavorites={handleFavorites}
+              inFavorites={pokemon.inFavorites}>
               </Pokemon>
             ))}     
       </ul>  
