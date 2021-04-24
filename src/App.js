@@ -391,15 +391,7 @@ useEffect (() => {
 
 
 useEffect (() => {
-      /*
-  let i = 0;
-  
-  for (i = 0; i < favoritesToRender.length; i ++)
-  {
-    favoritesToRender[i].inFavorites = true
-  } */
-
-  //console.log(favoritesToRender)
+ 
 
   return () => {
     setFavoritesToRender([])
