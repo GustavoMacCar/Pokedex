@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPage, nextPage})
 {
-    return (
+  return (
         <div>
           <Link to="/favorites/">Meus Favoritos</Link>
         <ul>

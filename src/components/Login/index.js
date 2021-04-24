@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './styles.css'
 
 function Login( {loginUser}) 
 {
@@ -9,7 +10,7 @@ function Login( {loginUser})
         loginUser(coach)
     }
 
-    return <form onSubmit={handleSubmit}>
+    return <form  onSubmit={handleSubmit}>
         <h2>Bem vindo!!!!</h2>
         <h3>Digite seu nome treinador!</h3>
         <input value={coach} onChange={event => setCoach(event.target.value)}></input>

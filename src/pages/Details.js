@@ -3,7 +3,7 @@ function Details({currentPokemon})
 {
     return  <div>
         <div>
-     <img src={currentPokemon.image_url}></img>
+        <img src={currentPokemon.image_url}></img>
         <p>{currentPokemon.number}</p>
         <h3>{currentPokemon.name}</h3>
         <span>{currentPokemon.kind}</span>
