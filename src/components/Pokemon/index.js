@@ -1,10 +1,32 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const StyledDiv = styled.div `
-display: inline
-float: left
+
+const StyledButton = styled.button `
+border-radius: 10px;
+border: 2px solid black;
+color: white;
+font-size: 13px;
+outline: none;
 `
+const StyledPokemon = styled.div `
+display: inline;
+float: left;
+
+`
+
+const StyledButtonName = styled.div `
+display: flex;
+flex-direction: column;
+margin-left: 10px;
+`
+
+const StyledImage = styled.img `
+border: 2px solid black;
+border-radius: 10px;
+margin-top: 10px;
+`
+
 
 function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inFavorites})
 {
@@ -19,17 +41,19 @@ function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inF
         buttonText = 'Favoritar'
     }
     
-    return <StyledDiv>
-        <Link to={`/details/${name}`}><img src={img_path} onClick={() => changeInfo(name)}></img></Link>
-        <span>{number}</span>
-        <h3>{upperCase(name)}</h3>
-        <span>{kind}</span>          
-        <div>
-        <button type="button" onClick={() => handleFavorites(name)}
-        style={{backgroundColor: inFavorites ? 'red' : 'green'}}
-        >{buttonText}</button>    
-        </div>    
-    </StyledDiv>
+    return <StyledPokemon>
+        <Link to={`/details/${name}`}><StyledImage src={img_path} onClick={() => changeInfo(name)}></StyledImage></Link>
+        <StyledButtonName>
+            <span>{number}</span>
+            <h3>{upperCase(name)}</h3>
+            <span>{kind}</span>          
+            <div>
+                <StyledButton type="button" onClick={() => handleFavorites(name)}
+                style={{backgroundColor: inFavorites ? 'red' : 'green'}}
+                >{buttonText}</StyledButton>    
+            </div>    
+        </StyledButtonName>
+    </StyledPokemon>
 
 }
 
