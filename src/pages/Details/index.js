@@ -1,42 +1,53 @@
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
+import Kind from '../../components/Kind/index'
 
 const StyledDiv = styled.div `
 display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
+height: 100%;
 ` 
 
 const PokemonDiv = styled.div `
-background-color: #e8cf89
+background-image: linear-gradient(45deg, black, #4287f5);
+border: 2px solid black;
+border-radius: 10px;
+height: 90px;
+border: white;
+margin: 100px
 
 `
 
-const AttributesDiv = styled.div`
-background-color: #f2e6c2
-
+const AttributesDiv = styled.div `
+background-color: blue;
+border: 2px solid black;
+border-radius: 10px;
+height: 100%;
 `
 
 function Details({currentPokemon})
 {
+
+  console.log(currentPokemon.kind)
+
     return  <StyledDiv>
-        <div>
           <PokemonDiv>
         <img src={currentPokemon.image_url}></img>
           </PokemonDiv>
           <AttributesDiv>
         <p>Number: {currentPokemon.number}</p>
         <h3>{currentPokemon.name}</h3>
-        <span>{currentPokemon.kind}</span>
+        {currentPokemon.kind.map((type) => (
+          <Kind type={type}></Kind>
+        ))}
         <p>Height: {currentPokemon.height}</p>
         <p>Weight: {currentPokemon.weight}</p>  
-          </AttributesDiv>   
-        </div>    
-        <div>
-        </div>
-    </StyledDiv>
+          </AttributesDiv>    
+    </StyledDiv> 
 
 }
 
 export default Details;
+

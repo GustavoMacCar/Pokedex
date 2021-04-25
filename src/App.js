@@ -226,8 +226,13 @@ function App() {
         .get(info)
 
       const detailedPokemon = response.data
+
+      if (detailedPokemon.kind !== undefined)
+      {
+        detailedPokemon.kind = detailedPokemon.kind.split(';')
+      }
      
-      console.log(detailedPokemon.kind)
+     // console.log(detailedPokemon.kind)
     
       setCurrentPokemon(
         {...detailedPokemon}
@@ -236,10 +241,10 @@ function App() {
     }
     getResponse();
 
-    
+    /*
     return () => {
       setCurrentPokemon({})
-    } 
+    }  */
 
   }, [info, login]);
 

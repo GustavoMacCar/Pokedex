@@ -14,6 +14,7 @@ height: 50px;
 justify-content: space-between;
 padding-left: 20px;
 padding-right: 20px;
+width: 95%;
 `
 
 const StyledButton = styled.button `

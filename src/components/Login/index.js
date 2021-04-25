@@ -7,6 +7,10 @@ border-radius: 10px;
 padding-left: 7px;
 outline: none;
 border: 1px solid #ddd;
+
+&:hover {
+    border 1px 3px 3px 1px solid #ddd;
+}
 ` 
 
 const StyledButton = styled.button `
@@ -30,7 +34,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: #6982b5;
 `
 
 
@@ -45,8 +48,8 @@ function Login( {loginUser})
 
     return <form onSubmit={handleSubmit}>
         <StyledDiv>
-            <h2>Bem vindo a Pokedex!!!!</h2>
-            <h3>Digite seu nome treinador!!</h3>
+            <h2>Bem vindo à Pokedex!!!!</h2>
+            <h3>Digite seu nome de treinador!!</h3>
             <StyledInput value={coach} onChange={event => setCoach(event.target.value)}></StyledInput>
             
             <StyledButton>Enviar</StyledButton> 
