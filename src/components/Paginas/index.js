@@ -6,20 +6,20 @@ const StyledNumber = styled.button `
 border-radius: 10px;
 border: 2px solid blue;
 background-color: black;
-margin-right: 10px;
+margin-right: 5px;
 margin-top: 5px;
 color: white;
-font-size: 13px;
+font-size: 12px;
 outline: none;
 `
 const StyledNext = styled.button `
 border-radius: 10px;
 border: 2px solid blue;
 background-color: black;
-margin-right: 10px;
+margin-right: 7px;
 margin-top: 5px;
 color: white;
-font-size: 15px;
+font-size: 12px;
 outline: none;
 `
 
@@ -27,7 +27,8 @@ outline: none;
 const SyteldButtons = styled.div `
 display: flex;
 flex-direction: row;
-
+margin-bottom: 20px;
+margin-left: 5px;
 `
 
 
@@ -43,20 +44,18 @@ function Paginas({ changePage, currentPage, nextPage, previousPage })
 
 
     return <div>
-        <div>
-        <StyledNext onClick={() => previousPage(currentPage)}>Página anterior</StyledNext>                        
-        </div>
         <SyteldButtons>
+            <StyledNext onClick={() => previousPage(currentPage)}>Anterior</StyledNext>                        
             <form onSubmit={handleSubmit}>
-            <StyledNumber onClick={() => setValue(1)}>1</StyledNumber>
-            <StyledNumber onClick={() => setValue(2)}>2</StyledNumber>
-            <StyledNumber onClick={() => setValue(3)}>3</StyledNumber>
-            <StyledNumber onClick={() => setValue(4)}>4</StyledNumber>
-            <StyledNumber onClick={() => setValue(5)}>5</StyledNumber>
-            <StyledNumber onClick={() => setValue(6)}>6</StyledNumber>
-            <StyledNumber onClick={() => setValue(7)}>7</StyledNumber>
-            <StyledNumber onClick={() => setValue(8)}>8</StyledNumber>
-            <StyledNumber onClick={() => setValue(9)}>9</StyledNumber>
+            <StyledNumber onClick={() => setValue(1)}>01</StyledNumber>
+            <StyledNumber onClick={() => setValue(2)}>02</StyledNumber>
+            <StyledNumber onClick={() => setValue(3)}>03</StyledNumber>
+            <StyledNumber onClick={() => setValue(4)}>04</StyledNumber>
+            <StyledNumber onClick={() => setValue(5)}>05</StyledNumber>
+            <StyledNumber onClick={() => setValue(6)}>06</StyledNumber>
+            <StyledNumber onClick={() => setValue(7)}>07</StyledNumber>
+            <StyledNumber onClick={() => setValue(8)}>08</StyledNumber>
+            <StyledNumber onClick={() => setValue(9)}>09</StyledNumber>
             <StyledNumber onClick={() => setValue(10)}>10</StyledNumber>
             <StyledNumber onClick={() => setValue(11)}>11</StyledNumber>
             <StyledNumber onClick={() => setValue(12)}>12</StyledNumber>
@@ -81,11 +80,9 @@ function Paginas({ changePage, currentPage, nextPage, previousPage })
             <StyledNumber onClick={() => setValue(31)}>31</StyledNumber>
             <StyledNumber onClick={() => setValue(32)}>32</StyledNumber>
             <StyledNumber onClick={() => setValue(33)}>33</StyledNumber>
+            <StyledNext onClick={() => nextPage(currentPage)}>Próximo</StyledNext>                        
     </form> 
     </SyteldButtons>
-    <div>
-        <StyledNext onClick={() => nextPage(currentPage)}>Página seguinte</StyledNext>                        
-    </div>
     </div>
             
 

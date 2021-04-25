@@ -23,7 +23,6 @@ function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPa
         <div>
           <StyledPokemon>
             <StyledUl>
-              <StyledList> 
               {pokemonsList.map((pokemon) => (
               <Pokemon key={pokemon.id}
               img_path={pokemon.image_url} 
@@ -33,7 +32,6 @@ function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPa
               inFavorites={pokemon.inFavorites}>
               </Pokemon>
             ))}     
-              </StyledList>
             </StyledUl>  
           </StyledPokemon>
 

@@ -10,8 +10,15 @@ font-size: 13px;
 outline: none;
 `
 const StyledPokemon = styled.div `
+display: inline;
+float: left;
+
+`
+
+const StyledButtonName = styled.div `
 display: flex;
-flex-direction: row;
+flex-direction: column;
+margin-left: 10px;
 `
 
 const StyledImage = styled.img `
@@ -34,17 +41,19 @@ function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inF
         buttonText = 'Favoritar'
     }
     
-    return <div>
+    return <StyledPokemon>
         <Link to={`/details/${name}`}><StyledImage src={img_path} onClick={() => changeInfo(name)}></StyledImage></Link>
-        <span>{number}</span>
-        <h3>{upperCase(name)}</h3>
-        <span>{kind}</span>          
-        <div>
-        <StyledButton type="button" onClick={() => handleFavorites(name)}
-        style={{backgroundColor: inFavorites ? 'red' : 'green'}}
-        >{buttonText}</StyledButton>    
-        </div>    
-    </div>
+        <StyledButtonName>
+            <span>{number}</span>
+            <h3>{upperCase(name)}</h3>
+            <span>{kind}</span>          
+            <div>
+                <StyledButton type="button" onClick={() => handleFavorites(name)}
+                style={{backgroundColor: inFavorites ? 'red' : 'green'}}
+                >{buttonText}</StyledButton>    
+            </div>    
+        </StyledButtonName>
+    </StyledPokemon>
 
 }
 
