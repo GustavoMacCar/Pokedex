@@ -6,6 +6,7 @@ import Pokemons from './pages/Pokemons/index'
 import Login from './components/Login/index'
 import Logout from './components/Logout/index'
 import Favorites from './pages/Favorites/index'
+import styled from 'styled-components'
 
 
 function App() {

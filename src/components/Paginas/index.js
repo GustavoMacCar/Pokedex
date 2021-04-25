@@ -11,6 +11,10 @@ margin-top: 5px;
 color: white;
 font-size: 12px;
 outline: none;
+
+&:hover {
+    background-color: blue; 
+}
 `
 const StyledNext = styled.button `
 border-radius: 10px;
@@ -21,6 +25,10 @@ margin-top: 5px;
 color: white;
 font-size: 12px;
 outline: none;
+
+&:hover {
+    background-color: blue; 
+}
 `
 
 
@@ -44,9 +52,9 @@ function Paginas({ changePage, currentPage, nextPage, previousPage })
 
 
     return <div>
-        <SyteldButtons>                       
+        <SyteldButtons>  
+        <StyledNext onClick={() => previousPage(currentPage)}>Anterior</StyledNext>                      
             <form onSubmit={handleSubmit}>
-            <StyledNext onClick={() => previousPage(currentPage)}>Anterior</StyledNext> 
             <StyledNumber onClick={() => setValue(1)}>01</StyledNumber>
             <StyledNumber onClick={() => setValue(2)}>02</StyledNumber>
             <StyledNumber onClick={() => setValue(3)}>03</StyledNumber>
@@ -79,9 +87,9 @@ function Paginas({ changePage, currentPage, nextPage, previousPage })
             <StyledNumber onClick={() => setValue(30)}>30</StyledNumber>
             <StyledNumber onClick={() => setValue(31)}>31</StyledNumber>
             <StyledNumber onClick={() => setValue(32)}>32</StyledNumber>
-            <StyledNumber onClick={() => setValue(33)}>33</StyledNumber>
-            <StyledNext onClick={() => nextPage(currentPage)}>Próximo</StyledNext>                        
+            <StyledNumber onClick={() => setValue(33)}>33</StyledNumber>                     
     </form> 
+    <StyledNext onClick={() => nextPage(currentPage)}>Próximo</StyledNext>   
     </SyteldButtons>
     </div>
             

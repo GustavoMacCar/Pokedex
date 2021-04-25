@@ -12,13 +12,14 @@ outline: none;
 const StyledPokemon = styled.div `
 display: inline;
 float: left;
+margin: 5px
 
 `
 
 const StyledButtonName = styled.div `
 display: flex;
 flex-direction: column;
-margin-left: 10px;
+margin-left: 40px;
 `
 
 const StyledImage = styled.img `
@@ -42,8 +43,8 @@ function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inF
     }
     
     return <StyledPokemon>
-        <Link to={`/details/${name}`}><StyledImage src={img_path} onClick={() => changeInfo(name)}></StyledImage></Link>
         <StyledButtonName>
+        <Link to={`/details/${name}`}><StyledImage src={img_path} onClick={() => changeInfo(name)}></StyledImage></Link>
             <span>{number}</span>
             <h3>{upperCase(name)}</h3>
             <span>{kind}</span>          

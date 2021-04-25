@@ -6,10 +6,10 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-background-color: #801116;
+background-color: black;
 margin-top: 10px;
 border-radius: 30px;
-border: 2px solid black;
+border: 2px solid blue;
 height: 50px;
 justify-content: space-between;
 padding-left: 20px;
@@ -20,14 +20,14 @@ const StyledButton = styled.button `
 height: 30px;
 width: 80px;
 font-size: 18px;
-border: 3px solid white;
 border-radius: 15px;
 outline: none;
 color: white;
-background-color: #cc1f26; 
+background-color: black; 
+border: 2px solid blue;
 
 &:hover {
-    background-color: #e07726; 
+    background-color: blue; 
 }
 `
 

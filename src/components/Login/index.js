@@ -14,10 +14,15 @@ margin-top: 10px;
 height: 30px;
 width: 80px;
 font-size: 15px;
-border: 1px solid black;
 border-radius: 15px;
 outline: none;
-background-color: #ddd; 
+background-color: black; 
+border: 2px solid blue;
+color: white;
+
+&:hover {
+    background-color: blue; 
+}
 `
 
 const StyledDiv = styled.div `
@@ -25,7 +30,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: white;
+background-color: #6982b5;
 `
 
 
