@@ -1,4 +1,10 @@
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const StyledDiv = styled.div `
+display: inline
+float: left
+`
 
 function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inFavorites})
 {
@@ -13,7 +19,7 @@ function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inF
         buttonText = 'Favoritar'
     }
     
-    return <div>
+    return <StyledDiv>
         <Link to={`/details/${name}`}><img src={img_path} onClick={() => changeInfo(name)}></img></Link>
         <span>{number}</span>
         <h3>{upperCase(name)}</h3>
@@ -23,7 +29,7 @@ function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inF
         style={{backgroundColor: inFavorites ? 'red' : 'green'}}
         >{buttonText}</button>    
         </div>    
-    </div>
+    </StyledDiv>
 
 }
 

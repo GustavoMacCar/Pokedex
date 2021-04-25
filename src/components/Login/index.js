@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 const StyledInput = styled.input `
 border-radius: 10px;
@@ -41,7 +42,9 @@ function Login( {loginUser})
             <h2>Bem vindo!!!!</h2>
             <h3>Digite seu nome treinador!!</h3>
             <StyledInput value={coach} onChange={event => setCoach(event.target.value)}></StyledInput>
+            
             <StyledButton>Enviar</StyledButton> 
+            
         </StyledDiv>
         
     </form>

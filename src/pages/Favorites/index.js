@@ -1,4 +1,4 @@
-import Pokemon from '../components/Pokemon/index'
+import Pokemon from '../../components/Pokemon/index'
 import {Link} from 'react-router-dom'
 
 
@@ -6,7 +6,6 @@ function Favorites({pokemonsList, changeInfo, handleFavorites})
 {
     return (
         <div>
-            <Link to="/">Voltar</Link>
         <ul>
     {pokemonsList.map((pokemon) => (
             <Pokemon key={pokemon.id}

@@ -1,5 +1,6 @@
-import Pokemon from '../components/Pokemon/index'
-import Paginas from '../components/Paginas/index'
+import Pokemon from '../../components/Pokemon/index'
+import Paginas from '../../components/Paginas/index'
+import styled from 'styled-components'
 
 
 function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPage, nextPage, handleFavorites})
@@ -8,7 +9,7 @@ function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPa
         <div>
           
         <ul>
-      {pokemonsList.map((pokemon) => (
+     {pokemonsList.map((pokemon) => (
               <Pokemon key={pokemon.id}
               img_path={pokemon.image_url} 
               name={pokemon.name} 
@@ -16,7 +17,7 @@ function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPa
               handleFavorites={handleFavorites}
               inFavorites={pokemon.inFavorites}>
               </Pokemon>
-            ))}     
+            ))} 
       </ul>  
 
       <Paginas previousPage={previousPage} nextPage={nextPage} currentPage={currentPage} changePage={changePage}></Paginas>

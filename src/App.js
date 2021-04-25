@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { useState, useEffect } from "react"
 import {BrowserRouter, Route} from 'react-router-dom'
-import Details from './pages/Details'
-import Pokemons from './pages/Pokemons'
+import Details from './pages/Details/index'
+import Pokemons from './pages/Pokemons/index'
 import Login from './components/Login/index'
 import Logout from './components/Logout/index'
-import Favorites from './pages/Favorites'
+import Favorites from './pages/Favorites/index'
 
 function App() {
   
@@ -224,7 +224,8 @@ function App() {
         .get(info)
 
       const detailedPokemon = response.data
-      //console.log(detailedPokemon)
+     
+      console.log(detailedPokemon.kind)
     
       setCurrentPokemon(
         {...detailedPokemon}
@@ -233,9 +234,10 @@ function App() {
     }
     getResponse();
 
+    
     return () => {
       setCurrentPokemon({})
-    }
+    } 
 
   }, [info, login]);
 
