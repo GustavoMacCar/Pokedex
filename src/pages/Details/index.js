@@ -30,6 +30,9 @@ height: 100%;
 function Details({currentPokemon})
 {
 
+  if (currentPokemon.kind !== undefined)
+  {
+
   console.log(currentPokemon.kind)
 
     return  <StyledDiv>
@@ -46,6 +49,24 @@ function Details({currentPokemon})
         <p>Weight: {currentPokemon.weight}</p>  
           </AttributesDiv>    
     </StyledDiv> 
+
+    } else {
+
+      console.log(currentPokemon.kind)
+
+    return  <StyledDiv>
+          <PokemonDiv>
+        <img src={currentPokemon.image_url}></img>
+          </PokemonDiv>
+          <AttributesDiv>
+        <p>Number: {currentPokemon.number}</p>
+        <h3>{currentPokemon.name}</h3>
+        <span>{currentPokemon.kind}</span>
+        <p>Height: {currentPokemon.height}</p>
+        <p>Weight: {currentPokemon.weight}</p>  
+          </AttributesDiv>    
+    </StyledDiv> 
+    }
 
 }
 
