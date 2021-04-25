@@ -28,7 +28,13 @@ const StyledImage = styled.img `
 border: 2px solid black;
 border-radius: 10px;
 margin-top: 10px;
-background-image: linear-gradient(45deg, black, #4287f5)
+background-image: linear-gradient(45deg, black, #4287f5);
+
+&:hover {
+    background-image: linear-gradient(45deg, black, #f0983a);
+    height: 120px;
+    width: 120px;
+}
 `
 
 function Pokemon({img_path, number, name, kind, changeInfo, handleFavorites, inFavorites})

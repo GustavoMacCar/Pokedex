@@ -7,7 +7,8 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-height: 100%;
+height: 450px;
+background-color: violet;
 ` 
 
 const PokemonDiv = styled.div `
@@ -25,6 +26,14 @@ background-color: blue;
 border: 2px solid black;
 border-radius: 10px;
 height: 100%;
+width: 40%;
+display: flex;
+flex-direction: column;
+align-items: center
+`
+
+const StyledImg = styled.img `
+height: 300%;
 `
 
 function Details({currentPokemon})
@@ -33,11 +42,11 @@ function Details({currentPokemon})
   if (currentPokemon.kind !== undefined)
   {
 
-  console.log(currentPokemon.kind)
+  //console.log(currentPokemon.kind)
 
     return  <StyledDiv>
           <PokemonDiv>
-        <img src={currentPokemon.image_url}></img>
+        <StyledImg src={currentPokemon.image_url}></StyledImg>
           </PokemonDiv>
           <AttributesDiv>
         <p>Number: {currentPokemon.number}</p>
@@ -52,7 +61,7 @@ function Details({currentPokemon})
 
     } else {
 
-      console.log(currentPokemon.kind)
+      //console.log(currentPokemon.kind)
 
     return  <StyledDiv>
           <PokemonDiv>

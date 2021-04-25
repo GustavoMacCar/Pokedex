@@ -21,17 +21,20 @@ const colors = {
     dark:"#4c2180"
 }
 
+const StyledKind = styled.div `
+background-color: ${props => colors[props.type]};
+border-radius: 20px;
+width: 30%;
+display: flex;
+align-items: right;
+justify-content: center;
+`
 
 
 function Kind( {type} ) 
 {    
 
-const StyledKind = styled.div `
-background-color: ${colors[type]};
-`
-
-
-    return <StyledKind>
+    return <StyledKind type={type}>
         <p>{type}</p>
     </StyledKind>
 }

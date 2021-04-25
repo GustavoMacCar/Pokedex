@@ -6,10 +6,6 @@ const StyledPokemon = styled.div `
 display: inline-block;
 `
 
-const StyledList = styled.li `
-display: inline-block;
-float: left;
-`
 
 const StyledUl = styled.ul `
 display: inline-block;
@@ -35,6 +31,7 @@ function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPa
             </StyledUl>  
           </StyledPokemon>
 
+      
       <Paginas previousPage={previousPage} nextPage={nextPage} currentPage={currentPage} changePage={changePage}></Paginas>
       </div>    
     )    
