@@ -241,10 +241,10 @@ function App() {
     }
     getResponse();
 
-    /*
+    
     return () => {
       setCurrentPokemon({})
-    }  */
+    }  
 
   }, [info, login]);
 
