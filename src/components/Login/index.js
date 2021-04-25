@@ -24,6 +24,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+background-color: white;
 `
 
 
@@ -38,7 +39,7 @@ function Login( {loginUser})
 
     return <form onSubmit={handleSubmit}>
         <StyledDiv>
-            <h2>Bem vindo!!!!</h2>
+            <h2>Bem vindo a Pokedex!!!!</h2>
             <h3>Digite seu nome treinador!!</h3>
             <StyledInput value={coach} onChange={event => setCoach(event.target.value)}></StyledInput>
             <StyledButton>Enviar</StyledButton> 

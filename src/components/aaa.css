@@ -1,5 +1,9 @@
 .body{
-    display: flex;
-    justify-content: space-between;
-    
+    display:flexbox;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color:lightskyblue;
+    height: 100%;
+    width: 100%;
 }

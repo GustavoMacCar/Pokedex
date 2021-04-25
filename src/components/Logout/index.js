@@ -38,8 +38,6 @@ textDecoration: "none"
 } ;
 
 
-
-
 function Logout( {loginUser, coach} ) 
 
 {

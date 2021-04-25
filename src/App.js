@@ -7,6 +7,7 @@ import Login from './components/Login/index'
 import Logout from './components/Logout/index'
 import Favorites from './pages/Favorites'
 
+
 function App() {
   
   /*
@@ -282,7 +283,7 @@ function App() {
         //console.log(favoritePokemonsList[0])
         let i = 0;
 
-       
+      
       for (i = 0; i < favoritePokemonsList.length; i++)
         {
           favoritePokemonsList[i].inFavorites = true            
@@ -390,7 +391,7 @@ useEffect (() => {
 
 
 useEffect (() => {
- 
+
 
   return () => {
     setFavoritesToRender([])
@@ -404,10 +405,12 @@ useEffect (() => {
 
 
 
+
+
   if(login === 'https://pokedex20201.herokuapp.com/users/'){ /*Verifica se o usuário fez o login*/
     return(
       
-      <Login  loginUser={loginUser}></Login>
+      <Login  loginUser={loginUser} ></Login>
     )
     
   }
