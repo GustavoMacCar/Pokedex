@@ -37,6 +37,7 @@ display: flex;
 flex-direction: row;
 margin-bottom: 20px;
 margin-left: 5px;
+margin-top: 30px;
 `
 
 

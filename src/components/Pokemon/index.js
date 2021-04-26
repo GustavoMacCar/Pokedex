@@ -8,6 +8,10 @@ border: 2px solid black;
 color: white;
 font-size: 13px;
 outline: none;
+
+&:hover {
+    background-image: linear-gradient(45deg, #d17417, #d17417);
+}
 `
 const StyledPokemon = styled.div `
 display: inline;
