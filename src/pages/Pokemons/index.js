@@ -25,7 +25,8 @@ function Pokemons({pokemonsList, changePage, changeInfo, currentPage, previousPa
               name={pokemon.name} 
               changeInfo={changeInfo}
               handleFavorites={handleFavorites}
-              inFavorites={pokemon.inFavorites}>
+              inFavorites={pokemon.inFavorites}
+              kind={pokemon.kind}>
               </Pokemon>
             ))}     
             </StyledUl>  

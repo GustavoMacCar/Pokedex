@@ -11,7 +11,8 @@ function Favorites({pokemonsList, changeInfo, handleFavorites})
         name={pokemon.name} 
         changeInfo={changeInfo}
         handleFavorites={handleFavorites}
-        inFavorites={pokemon.inFavorites}>
+        inFavorites={pokemon.inFavorites}
+        kind={pokemon.kind}>
             </Pokemon>
             ))}     
     </ul>  

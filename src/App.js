@@ -294,8 +294,11 @@ function App() {
       
       for (i = 0; i < favoritePokemonsList.length; i++)
         {
-          favoritePokemonsList[i].inFavorites = true            
+          favoritePokemonsList[i].inFavorites = true     
+          favoritePokemonsList[i].kind = favoritePokemonsList[i].kind.split(';')       
         }
+
+        
 
 
         setFavoritesToRender(
@@ -339,6 +342,7 @@ function App() {
     for (i = 0; i < fetchedPokemons.length; i++)
     {
       fetchedPokemons[i].inFavorites = false
+      fetchedPokemons[i].kind = fetchedPokemons[i].kind.split(';')
     }
 
 
