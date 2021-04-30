@@ -1,13 +1,13 @@
 import axios from 'axios'
 import { useState, useEffect } from "react"
 import {BrowserRouter, Route} from 'react-router-dom'
-import Pokemon from './components/Pokemon'
-import Details from './pages/Details'
-import Pokemons from './pages/Pokemons'
-import Login from './components/Login'
-import Logout from './components/Logout'
-import userEvent from '@testing-library/user-event'
-import Favorites from './pages/Favorites'
+import Details from './pages/Details/index'
+import Pokemons from './pages/Pokemons/index'
+import Login from './components/Login/index'
+import Logout from './components/Logout/index'
+import Favorites from './pages/Favorites/index'
+import styled from 'styled-components'
+
 
 function App() {
   
@@ -226,7 +226,13 @@ function App() {
         .get(info)
 
       const detailedPokemon = response.data
-      //console.log(detailedPokemon)
+
+      if (detailedPokemon.kind !== undefined)
+      {
+        detailedPokemon.kind = detailedPokemon.kind.split(';')
+      }
+     
+     // console.log(detailedPokemon.kind)
     
       setCurrentPokemon(
         {...detailedPokemon}
@@ -235,11 +241,12 @@ function App() {
     }
     getResponse();
 
+    
     return () => {
       setCurrentPokemon({})
-    }
+    }  
 
-  }, [info]);
+  }, [info, login]);
 
   useEffect(() => {
 
@@ -284,11 +291,14 @@ function App() {
         //console.log(favoritePokemonsList[0])
         let i = 0;
 
-       
+      
       for (i = 0; i < favoritePokemonsList.length; i++)
         {
-          favoritePokemonsList[i].inFavorites = true            
+          favoritePokemonsList[i].inFavorites = true     
+          favoritePokemonsList[i].kind = favoritePokemonsList[i].kind.split(';')       
         }
+
+        
 
 
         setFavoritesToRender(
@@ -332,6 +342,7 @@ function App() {
     for (i = 0; i < fetchedPokemons.length; i++)
     {
       fetchedPokemons[i].inFavorites = false
+      fetchedPokemons[i].kind = fetchedPokemons[i].kind.split(';')
     }
 
 
@@ -392,15 +403,7 @@ useEffect (() => {
 
 
 useEffect (() => {
-      /*
-  let i = 0;
-  
-  for (i = 0; i < favoritesToRender.length; i ++)
-  {
-    favoritesToRender[i].inFavorites = true
-  } */
 
-  //console.log(favoritesToRender)
 
   return () => {
     setFavoritesToRender([])
@@ -414,10 +417,12 @@ useEffect (() => {
 
 
 
+
+
   if(login === 'https://pokedex20201.herokuapp.com/users/'){ /*Verifica se o usuário fez o login*/
     return(
       
-      <Login loginUser={loginUser}></Login>
+      <Login  loginUser={loginUser} ></Login>
     )
     
   }
